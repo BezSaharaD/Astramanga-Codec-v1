@@ -1,0 +1,16 @@
+[package]
+name = "mvq"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = true
+panic = "abort"
+
+[dependencies]
+brotli = { path = "vendor/brotli" }
+zune-jpeg = "0.5"
+zune-core = "0.5"
+image-webp = "0.2"

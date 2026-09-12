@@ -1,0 +1,7 @@
+# mvq: закрепляем target-cpu для автовекторизации (AVX2/FMA) вместо baseline SSE2.
+# Замер-фундамент (2026-07-08): znver2 vs SSE2 = luma −20%, chroma −15%, brotli −9%,
+# вес БАЙТ-В-БАЙТ идентичен (bit-exact — Rust не контрактит FMA автоматически).
+# Локаль R5 3600 = znver2 = флот EPYC 7742 (тот же ISA). 7950x3d (znver4) и PGO —
+# через build_fleet.sh: env RUSTFLAGS ПОЛНОСТЬЮ переопределяет этот [build].rustflags.
+[build]
+rustflags = ["-C", "target-cpu=znver2"]
